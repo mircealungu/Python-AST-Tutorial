@@ -1,6 +1,6 @@
 import ast
 import inspect
-from fibonacci import fibonacci, lucas
+from fibonacci import fibonacci
 
 
 class JavascriptTranslator(ast.NodeVisitor):
