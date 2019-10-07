@@ -50,8 +50,9 @@ class ComplexityComputerVisitor(ast.NodeVisitor):
     def visit_FunctionDef(self, fundef):
         self.current_function = fundef.name
 
-        for each in fundef.body:
-            self.visit(each)
+        # important to call, since this function
+        # calls visit on every one of the children
+        self.generic_visit(fundef)
 
         self.current_function = ""
 
@@ -60,6 +61,8 @@ class ComplexityComputerVisitor(ast.NodeVisitor):
             self.function_complexity[self.current_function] += 1
         else:
             self.function_complexity[self.current_function] = 1
+
+        self.generic_visit(if_)
 
 
 # take as input the file passed as argument
