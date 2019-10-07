@@ -46,7 +46,9 @@ func_ast = ast.parse(f.read())
 
 translator = JavascriptTranslator()
 translated = translator.translate(func_ast)
-print (translator.function_complexity)
+
+for fun, complexity in translator.function_complexity.items():
+    print(sys.argv[1] + ", " + fun + ", " + str(complexity))
 
 
 
