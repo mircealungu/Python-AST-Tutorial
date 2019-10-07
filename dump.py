@@ -1,4 +1,5 @@
 import ast
 
-p = ast.parse("print(x)")
+p = ast.parse("def fun():"
+              "    pass")
 print(ast.dump(p))
