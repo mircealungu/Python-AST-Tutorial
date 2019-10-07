@@ -13,6 +13,27 @@ class ComplexityComputerVisitor(ast.NodeVisitor):
 
         Please think about how to refine it.
 
+
+        computing complexity of all the python files in
+        the airflow folder for example:
+
+            find airflow -name "*.py" | xargs -L 1 python complexity_visitor.py > airflow-analysis.csv
+
+        sorting the outputs based on their complexity:
+
+            cat airflow-analysis.csv | sort --field-separator=',' --key=3 -n
+
+        should result in something like this:
+
+            airflow/airflow/contrib/hooks/spark_jdbc_hook.py, _build_jdbc_application_arguments, 14
+            airflow/airflow/gcp/hooks/bigquery.py, run_load, 16
+            airflow/airflow/gcp/hooks/bigquery.py, run_query, 17
+            airflow/airflow/gcp/operators/spanner.py, _validate_inputs, 18
+            airflow/airflow/contrib/hooks/spark_submit_hook.py, _build_spark_submit_command, 25
+
+        surely, you would get different results with a more intelligent
+        implementation of the complexity
+
     """
 
     def __init__(self):
