@@ -4,8 +4,9 @@ import sys
 
 class ComplexityComputerVisitor(ast.NodeVisitor):
     """
-        Evaluate the complexity of functions
-        in a Python program
+
+        Evaluate the complexity of functions in a Python program
+        (Example written in class)
 
         Complexity of a function is defined in this
         program as being the "number of if conditionals
